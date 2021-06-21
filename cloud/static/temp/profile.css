@@ -1,0 +1,83 @@
+.content{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+
+/* check the icons in content */
+
+.main-div .dashboard .content .account{
+	position:absolute;
+	width:160%;
+	height:30% ;
+	left:20%;
+	top:0;
+	transform: translate(-50%,0);
+    justify-content:left;
+    background:var(--color-bg);
+
+}
+
+.main-div .dashboard .content .account label{
+    position:absolute;
+    left:62%;
+    top:10rem;
+    font-size:3rem;
+    font-weight:bold;
+    color:white;
+}
+
+/*The personal info*/
+
+.content .personal {
+    position:absolute;
+    top:30%;
+    width:100%;
+    height:70%;
+    font-size:1.5rem;
+}
+
+/*name */
+
+.content .personal .data{
+    margin-left:10%;
+   text-align:left;
+    margin-top:5vh;
+}
+
+.content .personal .data #label{
+    font-weight:bold;
+    font-size:18px;
+    color:Gray;
+    margin-bottom:20px;
+}
+
+.content .personal .data label{
+    margin-bottom:.7rem;
+    color:var(--color-bg);
+        font-size:1.5rem;
+
+}
+
+.content .personal .data #data{
+    display:block;
+    width:150px;
+    height:70px;
+        font-size:1.5rem;
+
+}
+
+
+button{
+    margin-left:45%;
+    margin-top:20pt;
+    margin-bottom:20pt;
+    height:20pt;
+    width:150px;
+    background-color:var(--color-bg);
+    color:white;
+    border:none;
+    border-radius:2px;
+    font-size:16px;
+}
+

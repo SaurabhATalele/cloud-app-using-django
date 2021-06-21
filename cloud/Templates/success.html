@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successfull...</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root{
+            --color-success:rgb(0, 201, 27);
+            --color-sec:#FFF;
+            --color-bg:#323062;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        @media(max-width : 700px){
+            html{
+                font-size: 55%;
+            }
+        }
+
+        @media(max-width : 600px){
+            html{
+                font-size: 40%;
+            }
+        }
+
+        .success{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            place-items: center;
+        }
+
+        .successfull{
+            position: relative;
+            width: 20%;
+            height: 10%;
+            padding: 20px;
+            font-size: 3rem;
+            text-align: center;
+            background-color: var(--color-success);
+            color: var(--color-sec);
+            border-radius: 2rem;
+        }
+
+        .caption{
+            font-size: 2rem;
+            padding: 3%;
+        }
+
+        .details-label{
+            font-weight:600;
+            font-size: 1.8rem;
+            padding-bottom: 3%;
+        }
+
+        .details{
+            width: 50%;
+            height: 40%;
+            border-radius: 1rem;
+            box-shadow: .01rem .01rem 1rem #808080;
+            padding:2rem;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            place-items:center;
+        }
+
+        table{
+            width:80%;
+            height: 100%;
+        }
+
+      tr :nth-child(odd){
+            color: var(--color-bg);
+            font-size: 1.6rem;
+        }
+
+    #op{
+        padding:2rem;
+    }
+
+    button{
+        width: 5rem;
+        height: 2rem;
+        background-color: var(--color-bg);
+        color: var(--color-sec);
+        border: none;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="success">
+        <div class="successfull">SUCCESS</div>
+        <div class="caption"> Your Payment towards the storage if successfull...</div>
+        <div class="details-label"> Your transaction details</div>
+        <div class="details">
+            <table>
+                <tr>
+                    <td>Transaction ID </td>
+                    <td>{{tid}}</td>
+                </tr>
+                <tr>
+                    <td>Payment Status </td>
+                    <td> Successfull</td>
+                </tr>
+                <tr>
+                    <td>Order ID </td>
+                    <td>{{oid}}</td>
+                </tr>
+                <tr>
+                    <td>Amount </td>
+                    <td>Rs.49</td>
+                </tr>
+            </table>
+        </div>
+        <div id="op">
+            <button onclick="window.print()">Print</button>
+            <button onclick="gohome()">OK</button></div>
+    </div>
+
+    <script>
+        function gohome() {
+            window.location.href ="{% url 'home' %}" 
+        }
+    </script>
+
+    
+</body>
+</html>

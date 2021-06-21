@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- maaterial icons link  -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'temp/dev_console.css' %}">
+</head>
+
+<body>
+    <div class="top-container">
+        <label id="dev-heading">WE ARE DEVELOPERS</label>
+        <label id="dev-heading-2">WELCOME '{{user.first_name}}' YOUR DEVELOPMENT CONSOLE</label>
+    </div>
+    <div class="bottom-container">
+        <div id="add-project" onclick="create_project_popup(this)">
+            <div id="inner-data">
+                <span class="material-icons">add</span>
+                <br>
+                <label id="add-project-label">Add Project</label>
+            </div>   
+        </div>
+
+        <div id='projects'></div>
+        {% for project in projects %}
+        <a href="project/{{project.id}}" style="text-decoration: none; color:black;">
+            <div id="project" >
+                <div id="data">
+                    <div id="project-title">
+                        <label >{{project.name}}</label>
+                    </div> 
+                     
+                    <div id="project-name" name="p_id">
+                        
+                        <label>{{project.id}}</label>
+                    </div>
+                </div>
+                   
+            </div>
+        </a>
+
+            {% endfor %}
+        
+        </div>
+
+        <div class="exit_button" >
+            <a href="{% url 'home' %}">Exit</a>
+        </div>
+            
+           
+        <div class="add-project-form" id='add-project-form'>
+            <form action="{% url 'createproject' %}" method="POST">
+                {% csrf_token%}
+                <label for="top">CREATE NEW PROJECT</label>
+                <br>
+                <br>
+                <br>
+                <input type="input" placeholder="Project Name" id="project-name" name="project_name">
+                <br>
+                <input type="input" placeholder="Project ID (Must Be Unique)" id="project-id" name="project_id">
+                <br>
+                <input type="submit" value="Create">
+                <br>
+    
+            </form>
+            <button onclick="close_add_project()">Close</button>
+        </div>    
+    </div>
+
+    
+
+
+    <script>
+        function create_project_popup(x){
+            var element = document.getElementById("add-project-form");
+            element.style.display = 'block';
+        }
+
+        function close_add_project(){
+            console.error('clicked');
+            var element = document.getElementById('add-project-form');
+            element.style.display = "none";
+        }
+    </script>
+</body>
+</html>

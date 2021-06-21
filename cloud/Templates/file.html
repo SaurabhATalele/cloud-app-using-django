@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- maaterial icons link  -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        html{
+            font-size: 62.5%;
+        }
+
+        @media(max-width:980px){
+            html{
+            font-size: 54.5%;
+        }
+        }
+
+        @media(max-width:750px){
+            html{
+            font-size: 40.5%;
+        }
+        }
+
+        #Header{
+            width:100vw;
+            height:7vh;
+            background-color: blue;
+        }
+        #Header ul{
+            float:right;
+            list-style: none;
+            display:flex;
+        }
+        #Header span{
+            position: relative;
+            margin-top: 1rem;
+            margin-left:2rem;
+            color:white;
+        }
+
+        #Header ul li {
+            right:5rem;
+            position: relative;
+            top:20%;
+            cursor: pointer;
+            text-decoration: none;
+            color:white;
+            margin-left: 2rem;
+        }
+
+        .file-data {
+            width: 100vw;
+            height:93vh;
+        }
+
+        .file-data iframe{
+            width: 100vw;
+            height: 91vh;
+        }
+        #back {
+            margin-right: 50rem;
+        }
+        img{
+        margin-left:50rem;
+        height:50rem;
+        width:50rem;}
+
+
+         .f-d{
+      position: absolute;
+      background-color:white;
+      top: 50vh;
+      left:50%;
+      transform: translate(-50%,-50%);
+      display: none;
+      justify-content: center;
+      place-items: center;
+      flex-direction: column;
+      width: 250px;
+      height:350px;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 1px 1px 10px .5px gray;
+    }
+
+    .f-d label{
+      font-size: 20px;
+      font-weight: bold;
+      color: #002b0e;
+    }
+
+    .f-d #f-d-l{
+      font-size: 15px;
+      font-weight: medium;
+      color:#0044ff;
+    }
+
+    .f-d #f-d-d{
+      font-size: 15px;
+      font-weight: lighter;
+    }
+    .f-d button{
+      width:100px;
+      height:30px;
+      background-color: #0044ff;
+      color: white;
+      border-radius: 10px;
+    }
+
+    .heading h2,.inf,.data , .button{
+			position: relative;
+			display: flex;
+			justify-content: center;
+		}
+
+		.Info,.inf,.data{
+			flex-direction: column;
+		}
+
+		.inf , .data{
+			place-items:center;
+		}
+		.Info{
+			position:absolute;
+      background-color: #fff;
+			display: none;
+			justify-content: center;
+			top: 8vh;
+			left:80%;
+			width: 30rem;
+			height:30rem;
+			font-size: 1.7rem;
+			border-radius: 2rem;
+			box-shadow: .1rem .05rem 1rem .05rem ;
+		}
+
+		.heading  h2{
+				top:-4rem;
+
+					}
+		.inf {
+			top:-4rem;
+		}
+		.data{
+			left:.5rem;
+			top:1rem;
+			bottom: 1rem;
+		}
+
+		.data :nth-child(odd){
+			color: blue;
+		}
+
+		.button{
+			position: relative;
+			top:1rem;
+		}
+
+		.button button{
+			width: 10rem;
+			height: 3rem;
+			background-color: blue;
+			color:white;
+			border-radius: 2rem;
+		}
+
+		label{
+			margin-bottom: .3rem;
+		}
+		
+    </style>
+</head>
+<body>
+   <div id="Header">
+    <a href="{% url 'home' %}"> <span class="material-icons" id='back'>arrow_back</span></a>
+
+       <ul>
+
+
+        
+           <li><span class="material-icons"  onclick="showinfo()">info</span></li>
+       </ul>
+
+   </div> 
+
+   <div class="file-data">
+        {% if type == 'jpg' or type == 'png' %}
+       <img src="{{location}}">
+       {% else %}
+       <iframe src="{{location}}" frameborder="0" ></iframe>
+    {% endif %}
+   </div>
+   <div class='Info' id="Info">
+		<div class="heading">
+		<h2>Details</h2>
+		</div>
+		<div class="inf">
+		<div class="data">
+			<label>Name: </label>
+			<label>{{name}}</label>
+		</div>
+		<div class="data">
+			<label>Size: </label>
+			<label>{{size}}</label>
+		</div>
+		<div class="data">
+			<label>Date_created: </label>
+			<label>{{date}}</label>
+		</div>
+	</div>
+	<div class="button">
+		<button onclick="hideinfo()">OK</button>
+	</div>
+</div>
+</div>
+
+
+
+    <script>
+        function showinfo(){
+          console.log("clicked");
+      var inf = document.getElementById('Info');
+      inf.style.display= 'flex';
+    }
+
+    function hideinfo(){
+      var inf = document.getElementById('Info');
+      inf.style.display= 'none';
+    }
+    </script>
+</body>
+
+</html>

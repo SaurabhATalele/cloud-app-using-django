@@ -1,0 +1,209 @@
+:root{
+        --color-white:white;
+        --color-red:red;
+        --color-primary :rgb(0, 81, 255);
+        --color-secondary:rgb(0, 47, 92);
+        --color-primary-hover:rgba(0, 81, 255, 0.040);
+        --font-roboto-400:'Roboto', sans-serif;
+        --font-noto-sans-300:'Noto Sans JP', sans-serif;
+    }
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    html{
+        font-size: 62.5%;
+    }
+
+    @media(max-width:975px){
+        html{
+            font-size: 55%;
+        }
+    }
+    @media(max-height:975px){
+        html{
+            font-size: 55%;
+        }
+    }
+
+    @media(max-width:700px){
+        html{
+            font-size: 40%;
+        }
+    }
+    @media(max-height:700px){
+        html{
+            font-size: 40%;
+        }
+    }
+
+    .top-container{
+        position: absolute;
+        background-color:var(--color-primary) ;
+        width:100vw;
+        height:35vh;
+    }
+
+    .top-container #dev-heading {
+        font-family: var(--font-roboto-400);
+        position: relative;
+        display: grid;
+        color: white;
+        top:10rem;
+        font-weight: bold;
+        font-size: 5rem;
+        justify-content: center;
+    }
+
+    .top-container #dev-heading-2{
+        position: relative;
+        display: grid;
+        color: white;
+        top:10.5rem;
+        font-size: 2rem;
+        justify-content: center;
+        font-family: var(--font-noto-sans-300);
+    }
+
+    /* ******************************************** */
+    .bottom-container{
+        position: absolute;
+        top:35vh;
+        width: 100vw;
+        height:65vh;
+    }
+
+    .bottom-container #add-project{
+        position: relative;
+        width:20rem;
+        height:25rem;
+        margin: 5rem;
+        display: inline-flex;
+        justify-content: center;
+        place-items: center;
+        text-align: center;
+        font-size: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: .2rem .2rem 1rem ;
+    }
+
+    .bottom-container #add-project #inner-data{
+        color:var(--color-primary);
+        font-family: var(--font-roboto-400);
+    }
+
+    .bottom-container #add-project:hover{
+        background-color:var(--color-primary-hover) ;
+    }
+
+    /* **************************************************** */
+    .bottom-container #project{
+        position: relative;
+        width:20rem;
+        height:25rem;
+        margin: 3rem;
+        display: inline-flex;
+        font-size: 1.5rem;
+        font-family: var(--font-roboto-400);
+        border-radius: 1rem;
+        box-shadow: .2rem .2rem 1rem ;
+    }
+
+    .bottom-container #project #project-title{
+        position: relative;
+        font-weight:bold;
+        top:2rem;
+        left: 2rem;
+        color:var(--color-secondary);
+        font-size: 2.5rem;
+        display:flex;
+        text-transform: uppercase;
+        flex-direction: column;
+    }
+
+    .bottom-container #project #project-name{
+        position: relative;
+        font-size: 1.5rem;
+        left: 2rem;
+        top:2.5rem;
+        display:flex;
+        flex-direction: column;
+    }
+
+    .bottom-container #project:hover{
+        background-color:var(--color-primary-hover) ;
+    }
+    /* *********************************************************************** */
+                            /* add project form  */
+    .add-project-form{
+        position: absolute;
+        width: 30rem;
+        height:35rem;
+        top: 50vh;
+        left: 50%;
+        transform:translate(-50%,-50%);
+        display:none;
+        text-align: center;
+        padding-top: 5rem;
+        font-family: var(--font-roboto-400);
+        box-shadow: .1rem .1rem 1rem;
+        border-radius: 1rem;
+        background-color:var(--color-white);
+    }
+
+    .add-project-form form label{
+        position: relative;
+        margin-bottom:3rem;
+        font-size: 3rem;
+        color: var(--color-primary)
+    }
+
+    .add-project-form input{
+        width: 20rem;
+        height:3rem;
+        border:none;
+        padding-left: .5rem;
+        border-bottom: 1px solid var(--color-primary);
+        margin-bottom: 1.5rem;
+        border-radius: .5rem;
+    }
+
+    .add-project-form input[type="submit"]{
+        width: 20rem;
+        height:3rem;
+        border:none;
+        background-color: var(--color-primary);
+        color:var(--color-white);
+        cursor: pointer;
+    }
+
+    .add-project-form  a{
+        text-decoration: none;
+    }
+
+    .add-project-form button{
+        width: 20rem;
+        height:3rem;
+        border:none;
+        border-radius: .5rem;
+        background-color: var(--color-red);
+        color:var(--color-white);
+        cursor: pointer;
+    }
+
+/* **************************************************************************************** */
+.exit_button{
+    position:sticky;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    width:5rem;
+    height:3rem;
+}
+
+.exit_button a{
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--color-white);
+}

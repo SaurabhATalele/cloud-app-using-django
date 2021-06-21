@@ -1,0 +1,86 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+	<link rel="stylesheet" href="{% static 'temp/forgot.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body >
+	{% for message in messages %}
+{% if message.message == 'exists' %}
+
+ <div class="otp">
+        <form action="{ url 'new_pass'}">
+            <label for="form">Enter OTP</label>
+            <input type="number" name="otp" placeholder="Enter the code" >
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+	{% else %}
+
+ <div class="otp">
+        <form action="">
+            <label for="form">Email is not registered!!!</label>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endif %}
+{% endfor %}
+<div class="main_div">
+	<div class="box">
+		<h2>FORGOT PASSWORD</h2>
+		<form action="{%url 'forgot_pass' %}" method="POST">
+			{% csrf_token %}
+			<div class="inputBox">
+				
+				<input type="text" name="email" autocomplete="off" required="true">
+				<label>Enter your email id  </label>
+			</div>
+			<div class="inputBox">
+			
+			<input type="submit" name="Submit" value="SUBMIT">
+		</br>
+	</br>
+
+		<div class="redirect">
+			Issue resolved?
+			<a href="{% url 'home_login' %}"> click here </a>
+			to login 
+		</br>
+	</div>
+			
+
+		
+
+    </div>
+		
+	</div>
+	</form>
+
+
+
+
+	
+</div>
+
+
+
+<script type="text/javascript">
+	function passShow()
+	{
+var a = document.getElementById('password');
+		if (a.type == "password") {
+        a.type="text";
+		}
+		else{
+			a.type="password";
+		}
+	}
+</script>
+
+</body>
+</html>

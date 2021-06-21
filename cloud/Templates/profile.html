@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<title>Profile</title>
+<!-- External css stylesheet  -->
+	<link rel="stylesheet" type="text/css" href={% static 'temp/profile.css' %}>
+{% endblock stylesheet %}
+
+{% block content %}
+<!-- contents of the cloud -->
+		<div class="content">
+            <div class="account">
+                <label>YOUR PROFILE</label>
+            </div>
+            <div class="personal">
+                {% if user.is_authenticated %}
+                <div class="data">
+                    <div id="data">
+                    <label id="label">Name  </label><br>
+                     <label>{{user.first_name}} {{user.last_name}}</label>
+                </div>
+                    </div>
+                <hr>
+                <div class="data">
+                <div id="data">
+                    <label id="label">Username  </label><br>
+                     <label id="lab">{{user.username}}</label>
+                </div>
+                <div id="data">
+                    <label id="label">Email </label><br>
+                     <label>{{user.email}}</label>
+                </div>
+                    </div>
+                <hr>
+
+                <div class="data">
+                <div id="data">
+                    <label id="label">Usage </label><br>
+                     <label>{{used}} of {{limit}} Gb</label>
+                </div>
+
+                    </div>
+                <div class="edit">
+                    <button onclick="window.location.href = '{% url 'edit' %}'">Edit</button>
+                </div>
+
+            {% endif %}
+            </div>
+		</div>
+
+
+
+
+{% endblock content %}

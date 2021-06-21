@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        :root{
+            --color-primary: #0a72b3;
+            --color-bg: #323062;
+            --color-white: #fff;
+            --color-yell: #fff;
+        }
+
+        .maindiv ,.header , .plans #plan{
+            display: flex;
+            justify-content: center;
+            place-items: center;
+            flex-direction: column;
+        }
+
+        .maindiv{
+            font-family: 'Open Sans',serif;
+            width: 100vw;
+            height: 100vh;
+            
+        }
+
+        .home{
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: #323062;
+        }
+
+        .home label{
+            position: relative;
+            top: -5px;
+        }
+        .header{
+            position: relative;
+            width: 50%;
+            height: 100px;
+            background-color: #323062;
+            font-weight: lighter;
+            margin: 50px;
+            font-size: 20px;
+            color: #FFFF;
+            border-radius: 20px;
+
+            float:left;
+            text-align: center;
+        }
+      
+      .plans{
+        position: relative;
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .plans #plan{
+        width: 20vw;
+        height: 100%;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: var(--color-yell);
+
+        box-shadow: 2px 2px 10px #808080;
+        margin: 0 20px 0 20px;
+      }
+
+      #plan #plan-name {
+        position: absolute;
+        top: 20px;
+        left:47%;
+        color: var(--color-bg);
+      }
+
+        #plan #plan-details{
+            text-align: center;
+            font-size: 20px;
+            color: var(--color-primary);
+        }
+
+
+      #plan #plan-details p{
+        margin: 30px;
+        font-size: 12px;
+        color: var(--color-bg);
+      }
+
+      #plan #buy-button{
+        position: absolute;
+        left:47%;
+        bottom: 0;
+      }
+
+      button{
+        width: 100px;
+        height: 30px;
+        background-color: var(--color-bg);
+        border-radius: 5px;
+        border: none;
+        color: var(--color-white);
+      }
+
+      #plan #plan-price{
+          position: relative;
+          left:35%;
+        font-size: 20px;
+        color: var(--color-primary);
+      }
+
+      a {
+          text-decoration: none;
+          color:var(--color-bg)
+      }
+
+    </style>
+</head>
+<body>
+    <div class="maindiv">
+
+        <div class="home"><a href="{% url 'home' %}"><i class="material-icons">home</i> <label>Home</label></a></div>
+
+        <div class="header">
+            <h2>Buy more storage</h2>
+        </div>
+        <div class="plans">
+
+            <div id="plan" >
+
+                <form action="{% url 'Buy' %}">
+
+                <div id="plan-name" name="premium">
+                    <h2>Premium</h2>
+                </div>
+                <div id="plan-details">
+                    10GB<br><p>
+                        This plan will give you a lifetime storage of 10 GB in your account
+                        </p>
+                </div>
+                <div id="plan-price">
+                    Rs.49 only
+                </div>
+                <div id="buy-button">
+                    <button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_881nU5d1hQtVkz", // Enter the Key ID generated from the Dashboard
+    "amount": "4900", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Cloud Storage",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        
+        window.location.href = "{% url 'home' %}"+"success/"+response.razorpay_payment_id+"/"+response.razorpay_order_id+"/"+response.razorpay_signature;
+
+    },
+    "prefill": {
+        "name": "{{user.username}}",
+        "email": "{{user.email}}",
+        "contact": "7777777777"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+        alert("Error");
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+
+
+</script>
+                </div>
+            </form>
+            </div>
+
+            
+            
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+html{
+    font-size: 62%;
+}
+
+@media(max-width:970px){
+    html{
+        font-size: 55%;
+    }
+}
+
+@media(max-width:750px){
+    html{
+        font-size: 45%;
+    }
+}
+
+html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, textarea, label {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 1.4rem;
+      color: #666;
+      line-height: 2.2rem;
+      }
+      h1 {
+      position: absolute;
+      margin:0;
+      font-size: 6rem;
+      color: #fff;
+      z-index: 2;
+      line-height: 8.3rem;
+      top:3rem;
+      }
+      legend {
+      padding: 1rem;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 1.8rem;
+      color: #fff;
+      background-color: #1c87c9;
+      }
+
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3rem;
+      }
+      form {
+      width: 100%;
+      padding: 2rem;
+      border-radius: .6rem;
+      background: #fff;
+      box-shadow: 0 0 .8rem #006622;
+      }
+      .banner {
+      position: relative;
+      height: 25rem;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+
+      input {
+      width: calc(100% - 1rem);
+      padding: .5rem;
+      }
+
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+      color:  #006622;
+      }
+
+      .item input:hover {
+      border: 1rem solid transparent;
+      box-shadow: 0 0 .3rem 0  #006622;
+      color: #006622;
+      }
+      .item {
+      position: relative;
+      margin: 1rem 0;
+      }
+
+
+      .colums {
+      display:flex;
+      justify-content:space-between;
+      flex-direction:row;
+      flex-wrap:wrap;
+      }
+      .colums div {
+      width:48%;
+      }
+
+
+      .flax {
+      display:flex;
+      justify-content:space-around;
+      }
+      .btn-block {
+      margin-top: 1rem;
+      text-align: center;
+      }
+      button {
+      width: 15rem;
+      padding: 1rem;
+      border: none;
+      border-radius: .5rem;
+      background:  #1c87c9;
+      font-size: 1.6rem;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background:  #0692e8;
+      }
+      a{
+      text-decoration:none;
+      padding-left:5rem;
+      padding-right:5rem;
+      padding-top: 1rem;
+      padding-bottom:1rem;
+      border: none;
+      border-radius: .5rem;
+      background: red;
+      font-size: 1.6rem;
+      color: #fff;
+      cursor: pointer;
+      }

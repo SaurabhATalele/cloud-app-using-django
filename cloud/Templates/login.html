@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+
+	<link rel="icon" type="image/png" href="E:\ILLUSTRATOR\SAURABH LOGO.png">
+
+	<link rel="stylesheet" href="{% static 'temp/login.css' %}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body >
+	
+<div class="main_div">
+	<div class="box">
+		<h1>LOGIN</h1>
+		<form action="{% url 'home_login' %}" method="POST">
+			{% csrf_token %}
+
+			
+			<div class="inputBox">
+				
+				<input type="text" name="email" autocomplete="off" required="true">
+				<label> Username</label>
+			</div>
+			<div class="inputBox">
+			
+				<input type="password" name="password1" autocomplete="off" required="true">
+				<label> Password </label>
+				</div>
+				<div class="showpass">
+					
+				<input type="checkbox" onclick="passShow()">
+				 Show password </br></br>
+			</div>
+			<input type="submit" name="Submit" value="login">
+		</br>
+	</br>
+
+		<div class="redirect">
+			Don't have an account
+			<a href={% url 'signup' %}> click here </a>
+			to sign up
+		</br><br>
+		<!-- <a href="{% url 'forgot_pass'%}">Forgot password?</a> -->
+	</div>
+			
+
+		
+		</form>
+		
+	</div>
+	
+</div>
+
+
+
+<script type="text/javascript">
+	function passShow()
+	{
+var a = document.getElementById('password');
+		if (a.type == "password") {
+        a.type="text";
+		}
+		else{
+			a.type="password";
+		}
+	}
+</script>
+
+</body>
+</html>

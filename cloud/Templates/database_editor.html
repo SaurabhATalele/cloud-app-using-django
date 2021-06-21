@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- maaterial icons link  -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>SQL Editor</title>
+     <link rel="stylesheet" href="{% static 'temp/databse_editor.css' %}">
+     <script src="{% static 'temp/databaseEditor.js' %}"></script>
+</head>
+<body>
+    <div class="d-e-c-h">
+        <ul>
+            <li><a href="">Options</a></li>
+            <li><a href="">Query</a></li>
+            <li><a href="{% url 'dev_console' %}">Exit</a></li>
+        </ul>
+    </div>
+
+    <!-- ****************************************** -->
+    <div class="d-e-c-s">
+        <div class="d-e-c-s-h">
+            <label>
+                TABLES OF THE PROJECT
+            </label>
+        </div>
+
+        <div class="d-e-c-s-d">
+            <ul id="myUL">
+              {% for key,value in tables.items %}
+            <li><span class="caret">{{key}}</span>
+              <ul class="nested">
+                <li><span class="caret">columns</span>
+                  <ul class="nested">
+                   {% for v in value %} 
+                    <li>{{v}}</li>
+        {% endfor %}
+                   
+                  </ul>
+                </li>  
+              </ul>
+            </li>
+        {% endfor %}
+          </ul>
+
+        </div>
+    </div>
+
+    <!-- ******************************************************** -->
+    <div class="d-e-c-q">
+        <div class="d-e-c-q-h">
+            <label> {{project}}:Your Query Here.... </label>    
+        </div>
+        <div class="d-e-c-q-q">
+            <form action="{{project}}" name="queryform" method="POST">
+                {% csrf_token %}
+                <textarea name="query" onkeydown="keydown(event)">{{query}} </textarea>
+                <a type="submit"><i class='material-icons' >play_arrow</i> </a>
+                <input type="submit" value=" Execute ">
+                
+            </form>
+        </div>
+    </div>
+
+    <!-- **************************************************************** -->
+    <div class="d-e-c-r">
+        <table>
+            <tr> {% for col in cols %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}  
+            <tr>
+                {% for dat in row %}
+                <td>{{dat}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            
+
+        </table>
+     </div>
+
+    <!-- ***************************************************************************** -->
+    <div class="d-e-c-f">
+        <label>{{output}}</label>
+    </div>
+
+
+
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+        
+        for (i = 0; i < toggler.length; i++) {
+          toggler[i].addEventListener("click", function() {
+            this.parentElement.querySelector(".nested").classList.toggle("active");
+            this.classList.toggle("caret-down");
+          });
+        }
+
+        function keydown(event){
+            var x = event.key;
+
+            if(x == "Tab"){
+                document.queryform.submit();
+            }
+        }
+        </script>
+</body>
+</html>

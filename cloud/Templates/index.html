@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewreport" width="device-width" initial-scale=1>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/svg" href="F:\html assets\120_ui_pack_icons_Rudez-Studio_080619\UI Basic Glyph\UI basic GLYPH-01.svg">
+	<!-- maaterial icons link  -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	
+	<!-- Font oswald -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href={% static 'temp/style.css' %}>
+	<script src="{% static 'temp/Index.js' %}"></script>
+	<!-- Doughnut chart from google -->
+	    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	
+	{% block stylesheet %}
+	{% endblock stylesheet %}
+</head>
+<body>
+	<div class="main-div">
+
+		<!-- sidebar in the main div  -->
+	<div class="sidebar">
+		<!-- top side of the sidebar  -->
+		<div class="Top">
+
+
+	<a href="cd/root"><i class="material-icons">home</i>
+		<label for="home">Home</label>
+		<span class="lab">Home</span>
+	</a>
+	<a  onclick="showcreate(this)"><i class="material-icons" >add</i>
+		<label for="home">New</label>
+		<span class="lab">Create</span>
+	</a>
+	<a href="{% url 'profile' %}"><i class="material-icons">person_outline</i>
+		<label for="home">Profile</label>
+		<span class="lab">Profile</span>
+	</a>
+	
+</div>
+<!-- Bottom side of the sidebar -->
+<div class="bottom">
+	<a onclick="showmore(this)"><i class="material-icons">more_horiz</i>
+		<span class="lab">More</span>
+	</a>
+</div>
+	</div>
+
+	<!-- More Options -->
+	
+    <div class="more" id="more">
+        <ul>
+            <li><a href="{% url 'logout' %}">Logout <i class="material-icons">logout</i></a></li>
+            <li><a href="{% url 'dev_console' %}">DevTools <i class="material-icons">developer_mode</i></a></li>
+            <li><a href="{% url 'Buy' %}">Buy storage <i class="material-icons">shopping_cart</i></a></li>
+        </ul>
+    </div>
+    
+	<!-- The dashboard -->
+	<div class="dashboard">
+		
+		{% block content %}
+		{% endblock content %}
+
+		<!-- upload button -->
+		<div class="button1" onclick="tog(this)"><i class="material-icons" >backup</i><label>Upload</label> </div>
+
+
+		<div class="file-dialog" id='up'>
+			<form  enctype = "multipart/form-data" onsubmit="onFormSubmit(event)">
+				{% csrf_token %}
+				<input type="file" id="file" name="file_to_upload">
+				<input type="submit" style="cursor: pointer;" value="Upload">
+				<div class="closer" onclick="closer(this)">Close</div>
+			</form>
+			</div>
+		<!--upload progress -->
+	<div class="container" id="container">
+		<i class="material-icons" id="close_prog" onclick="close_cont(this)">close</i>
+	<div class="form-group" style="display:none;" id="progress_div">
+            <div class="progress">
+                    <div class="progress-bar" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <p id="progress_text"></p>
+        </div>
+	</div>
+	</div>
+
+	</div>
+
+
+
+<!--  add folder -->
+ <div class="add_folder" id="one">
+        <label>Create folder</label>
+
+        <form action="{% url 'createfolder'%}" method="POST">
+			{% csrf_token %}
+            <input type="text" name="foldername" placeholder="Foldername">
+            <input type="submit" name="submit" id="create" value="Create">
+        </form>
+        <button onclick="cancler(this)" id="canc">Cancle</button>
+
+    </div>
+
+
+
+
+</body>
+</html>

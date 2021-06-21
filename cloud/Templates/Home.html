@@ -1,0 +1,230 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block stylesheet %}
+<title>
+		Home
+	</title>
+<!-- External css stylesheet  -->
+<script src="{% static 'temp/home.js' %}" ></script>
+
+	<link rel="stylesheet" type="text/css" href={% static 'temp/Home.css' %}>
+{% endblock stylesheet %}
+
+{% block content %}
+<!-- contents of the cloud -->
+		<div class="content">
+           
+
+			<div class="searchbar">
+    <form action="{% url 'search' %}" method="post">
+    {% csrf_token %}
+        <input type="text" placeholder="Search" name="Search">
+        <button type="submit"><i class="material-icons">search</i></button>
+    </form>
+    
+
+</div>
+<div class="back">
+    <a href="back" class="material-icons">arrow_back</a>
+</div>
+<ul class="breadcrumb">
+    {% for p in path %}
+    {% if p == "root" %}
+   <li>Home</li>
+   {% else %} 
+   <li>{{p}}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+            <div class="labels">
+            <label id="label1">Filename</label>
+            <label id="label2">Date Created</label>
+            </div>
+
+            <!-- ________________________________________________________________
+                                    printting folders
+                                     -->
+                                  
+                                     {% for s in folders %}
+                                    <li class="file"  id="tile">
+                                        <!-- For dict ________________-->
+                                        {% for k,v in s.items %} 
+
+                                        {% if k == 'name' %}
+                                        <!-- if name______________-->
+
+                                        <div class="ext"  id="ext">
+                                            <img src="{% static 'images/folder.png' %}" alt="Dir">
+                                            
+                                            </div>
+                                        <div class="Filename" oncontextmenu="return showmen(event,'{{v}}');" >
+                                      <a href="cd/{{v}}">
+                                           
+                                            <div class="name" >
+                                            <label name="dir">{{v}}</label>
+                                           
+                                        </div>
+                                    </a>
+
+                                   
+
+                                        {% endif %} 
+
+                                                {% if k == 'date_created' %}
+                                            
+                                                <div class="options" id="options">
+                                                    <label id='date-label'>{{v}}</label>
+                                                                </div>
+                                         
+                                       
+                                    
+                                       
+                                        
+                                        </div>
+                                    
+
+                                        {% endif %} 
+                                        
+                                        <!-- End if name_____________-->
+                                        {% endfor %} 
+                                        <!-- End For dict ______________-->
+                                    </li>
+
+                                    {% endfor %}
+                                    <!--  End Top for ________________ -->
+                                    
+                                    
+
+
+        <!-- ________________________________________________________________                
+                                    printing files -->
+                                    <!--  Top for ___________ -->
+                                    {% for s in files %}
+                                    <li class="file"   id="tile">
+                                        <!-- For dict ________________-->
+                                        {% for k,v in s.items %} 
+                                        {% if k == 'type' %}
+                                        <!-- if type______________-->
+                                        <div class="ext"  id="ext">
+                                            {% if v == "exe" or  v == "apk"  %}
+                                            <img src="{% static 'images/exe.png' %}" alt="exe">
+                                         {% elif v == 'pdf'%}
+                                         <img src="{% static 'images/pdf.png' %}" alt="pdf">
+                                          {% elif v == 'txt' or v == 'css' %}
+                                         <img src="{% static 'images/doc.png' %}" alt="pdf">
+                             
+                                          {% elif v == 'doc' or v == 'docx'%}
+                                         <img src="{% static 'images/word.png' %}" alt="pdf">
+                             
+                                          {% elif v == 'xlsx'%}
+                                         <img src="{% static 'images/xlsx.png' %}" alt="pdf">
+                             
+                                          {% elif v == 'html'%}
+                                                     <img src="{% static 'images/pdf.png' %}" alt="pdf">
+                             
+                                          {% elif v == 'jpeg' or v == 'jpeg' or  v == 'png' or  v == 'svg' or  v == 'tif'%}
+                                                     <img src="{% static 'images/img.png' %}" alt="pdf">
+                             
+                                         {% else %}
+                             
+                                         <img src="{% static 'images/doc.png' %}" alt="pdf">
+                             
+                             
+                                       
+                             
+                             
+                                            {% endif %}
+                                        </div>
+                                        {% endif %} 
+                                        <!-- End if type_____________-->
+
+                                        {% if k == 'name' %}
+                                        <!-- if name______________-->
+                                        <div class="Filename" oncontextmenu="return showmen(event,'{{v}}');">
+                                        <a href="f/{{v}}">
+                                            
+                                            <div class="name"  >
+                                            <label for="name">{{v}}</label>
+                                           
+                                            
+                                        </div>
+                                    </a>
+                                       
+                                        {% endif %} 
+
+                                                {% if k == 'date_created' %}
+
+                                                <div class="options" >
+                                            <label id='date-label'>{{v}}</label>
+                                                        </div>
+                                       
+                                 
+                                                    </div>
+
+                                        {% endif %} 
+                                        
+                                        <!-- End if name_____________-->
+                                        {% endfor %} 
+                                        <!-- End For dict ______________-->
+                                    </li>
+
+                                    {% endfor %}
+                                    <!--  End Top for ________________ -->
+    
+        </div>
+        </div>
+    
+
+
+    
+
+<!-- _________________________________________________________________ -->
+    <!--                       message                              -->
+    <!-- _________________________________________________________________ -->
+    <div class="msg">
+        <h2>Message!!!</h2>
+        <label>Success!!!</label>
+        <button onclick="hideall()">Ok</button>
+    </div>
+
+
+    <!-- _________________________________________________________________ -->
+    <!--                        context menu                               -->
+    <!-- _________________________________________________________________ -->
+
+    <div class="main"  >
+
+        <div class="context-menu">
+            <ul>
+                <li onclick="showrename()"> Rename</li>
+                <li onclick="showconf()">Delete</li>
+                
+            </ul>
+        </div>
+    
+        <div class="renamer" >
+            <h3>Rename File</h3>
+            <form class = "newname" method="POST" onsubmit="redren(event)">
+                {% csrf_token %}
+                <input type="text"  id="newname" name="filenew">
+                <input type="submit" >
+            </form>
+            <button onclick="hiderenamer()">close</button>
+            <p>*Do not change the extension it may cause damage to the file</p>
+        </div>
+    
+       
+
+        <div class="confirmation">
+            <h1>Alert!!!</h1>
+            <label>Are you sure to Delete the following file?</label>
+            <button onclick="deletefile(event)">Yes</button>
+            <button onclick="hideconf()">No</button>
+        </div>
+    
+        
+        </div>
+
+
+{% endblock content %}

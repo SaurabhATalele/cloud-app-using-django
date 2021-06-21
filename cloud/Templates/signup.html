@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Login Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" type="image/png" href="E:\ILLUSTRATOR\SAURABH LOGO.png">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'temp/Signup.css' %}">
+		
+
+    </head>
+    <body>
+
+        <div class="main_div">
+            <div class="box">
+                <h1>SIGNUP</h1>
+
+                <form action="signup" method="POST">
+                    {% csrf_token %}
+					
+                    <div class="inputBox">
+                        
+                        <input type="text" name="First_Name" autocomplete="off" required="true">
+                        <label>First Name  </label>
+                    </div>
+					<div class="inputBox">
+                        
+                        <input type="text" name="Last_Name" autocomplete="off" required="true">
+                        <label>Last Name  </label>
+                    </div>
+
+                    <div class="inputBox">
+
+                        <input type="text" name="username" autocomplete="off" required="true">
+                        <label>Username </label>
+                    </div>
+
+                    <div class="inputBox">
+                        
+                        <input type="email" name="Email" autocomplete="off" required="true">
+                        <label>email  </label>
+                    </div>
+                    <div class="inputBox">
+                    
+                        <input type="password" name="password1" autocomplete="off" required="true">
+                        <label> Password </label>
+                       
+                        </div>
+
+                        <div class="inputBox">
+                        
+                            <input type="password" name="confirm_pass" autocomplete="off" required="true">
+                            <label>Confirm Password  </label>
+                        </div>
+<!-- 
+                        <div class="showpass">
+                            
+                        <input type="checkbox" onclick="passShow()">
+                         Show password </br></br>
+                    </div> -->
+					
+                    <input type="submit"  name="Submit" value="Signup">
+                </br>
+            </br>
+                <div class="redirect">
+                    Already have an account
+                    <a href={% url 'home' %}> click here </a>
+					to login
+				
+                
+                </form>
+            </div>
+
+        </div>
+		{% for message in messages%}
+				  {% if message != null %}
+				  <div class="message" id="message">
+					<label for="ok">{{message}}
+					</label>
+					<br>
+					<button onclick="closing(this)">OK</button>
+				 </div>
+				  {% endif%}
+			  {% endfor %}
+
+		 
+		 <script>
+			function closing(x){
+			  var mes = document.getElementById('message');
+			  mes.style.display ='none';
+			}
+			function opener(msg){
+				
+				alert(msg);
+			}
+			
+		 </script>
+    </body>
+</html>

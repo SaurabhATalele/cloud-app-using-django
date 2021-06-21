@@ -1,0 +1,384 @@
+:root{
+	--color-bg:#2E3460;
+	--color-yellow:#d6a93b;
+	--color-font:#fff;
+	--color-close:#C35F28;
+}
+
+*{
+	margin:0;
+	padding:0;
+	font-family: 'Quesrial', sans-serif;
+	
+}
+
+html{
+	font-size: 62.5%;
+}
+
+@media(max-width:980px){
+	html{
+		font-size: 55%;
+	}
+}
+
+@media(max-width:750px){
+	html{
+		font-size: 45%;
+	}
+}
+
+body{
+	height:100vh;
+	background-color:#ffffff; 
+}
+/* ************************************************************************************************************************ */
+											/*sidebar style*/
+.sidebar{
+
+	height:100vh;
+	/* background-image: linear-gradient(#03aae2, #9813f1); */
+	background-color: var(--color-font);
+	opacity: 80%;
+	/* float:left; */
+	width:5rem;
+
+	position:absolute;
+}
+
+/* top side od sidebar  */
+.sidebar .Top{
+	margin-top:10rem;
+}
+
+/* sidebar images */
+.sidebar .Top a{
+	text-decoration: none;
+}
+
+/*siggest label */
+.sidebar  a .lab{
+	visibility: hidden;
+	position:absolute;
+	left:10%;
+	font-size: 1rem;
+	height:1.5rem;
+	border-radius: .3rem;
+	padding-left: .2rem;
+	padding-top: .2rem;
+	width:4rem;
+	text-align: center;
+	background-color: #555;
+	color: white;
+	transition: opacity 1s;
+}
+.sidebar  a:hover .lab{
+	visibility: visible;
+}
+
+/*sidebar icons*/
+.sidebar i{
+
+	color:var(--color-bg);
+	display: block;
+	position: relative;
+	font-size: 3rem;
+	margin-top: 3vh;
+	margin-left: 20%;
+
+}
+.sidebar label{
+	position: relative;
+	left: 5rem;
+	font-size: 1.5rem;
+	top: -2.5rem;
+	color: var(--color-bg);
+	cursor: pointer;
+}
+
+.sidebar  i:hover{
+	cursor: pointer;
+	color: var(--color-yellow);
+}
+.sidebar  i:hover a .homel{
+    color:white;
+}
+.sidebar a .homel{
+    position:relative;
+    display:none;
+}
+
+
+
+/* Bottom of sidebar  */
+.sidebar .bottom{
+	position: inherit;
+	height:10rem;
+	top:80%;
+
+}
+
+/* sidebar bottom images */
+
+/* ********************************************************************************************************** */
+
+/* main div
+ */
+
+ .main-div {
+	/* background-color: red; */
+	 position: relative;
+
+	 height:100vh;
+ }
+ /* ***************************************************************************************************************** */
+												/* upload button  */
+ .button1{
+
+	position:absolute;
+	top:3rem;
+	right:2rem;
+	background-color: var(--color-bg);
+	border: none;
+	padding-right:2rem;
+	color: white;
+	font-size: 1.5rem;
+	width:10rem;
+	height:3.5rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	float:right;
+}
+ 
+
+ .button1 i{
+	position:relative;
+	height:2rem;
+	width:2rem;
+	top:.5rem;
+	left: 1rem;
+	right: 1rem;
+	margin-right: 1rem;
+}
+
+.button1 label{
+	position: absolute;
+	margin: 7px 5px 0 9px;
+}
+
+/* dashboard */
+.main-div .dashboard{
+	height:100%;
+	width:100%;
+}
+/* ********************************************************************************************************************	 */
+										/* Content in the dashboard  */
+.main-div .dashboard .content{
+	position: relative;
+	overflow:auto;
+	scroll-behavior: smooth;
+
+	height:90%;
+	width: 80%;
+	background-color: #e4e3e15b;
+	padding-left: 2.5rem;
+	padding-top:5rem;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 2.5rem;
+}
+
+/* ********************************************************************************************************************** */
+										/* hiding the scrollbar  */
+.content::-webkit-scrollbar{
+	display:none;
+}
+
+.content{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* ****************************************************************************************************************** */
+									/* check the icons in content */
+
+.content .account{
+	position: absolute;
+	width:75%;
+	height:100vh ;
+	left:50rem;
+	top:20%;
+	transform: translate(-90%,0);
+	
+
+}
+.content i{
+	position: relative;
+	left:40%;
+	color: red;
+	font-size: 10rem;
+}
+.content h2 {
+	position: relative;
+	left:50%;
+	float:right;
+	color: red;
+}
+
+ .file-dialog{
+	position:absolute;
+	display:none;
+	top:3rem;
+	right:2rem;
+	background-color: var(--color-yellow);
+	border: none;
+	padding:1rem;
+	color: white;
+	width:15vw;
+	height:15vh;
+	border-radius: 1rem;
+	float:right;
+	font-size:1.5rem;
+}
+
+ .file-dialog input[type="submit"]{
+	margin-top:3rem;
+	background-color: var(--color-bg);
+	color: var(--color-font);
+	height: 3rem;
+	border: none;
+	border-radius: 1rem;
+	width: 7rem;
+}
+
+ .file-dialog .closer{
+	position:relative;
+	color:var(--color-font);
+	background-color: var(--color-close);
+	top:-3rem;
+	text-align: center;
+	left:30%;;
+	width:5rem;
+	height: 3rem;
+	padding: .5rem;
+	border-radius: 1rem;
+	cursor: pointer;
+
+}
+
+/* *************************************************************************************************************************** */
+														
+													/*add page */
+  #one{
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            height:10rem;
+            width:25rem;
+            display: none;
+            justify-content:center;
+            border-radius: .5rem;
+            box-shadow: .1rem .3rem .5rem black;
+        }
+
+        .add_folder form{
+            position: relative;
+            display:block;
+        }
+
+        .add_folder form input{
+            position: relative;
+            /* margin-top:7%; */
+            left:15%;
+            border:solid .1rem black;
+        }
+
+        .add_folder #create{
+            position: relative;
+            top:100%;
+            left:-15%;
+            height: 2.5rem;
+            padding-left:1rem;
+            padding-right:1rem;
+            background-color: green;
+            border: .1rem .1rem .1rem black;
+            color: white;
+            box-shadow: black;
+        }
+        .add_folder #canc{
+            position: relative;
+            width: 6rem;
+            height: 2.5rem;
+            top:0%;
+            left:15%;
+            background-color: red;
+            color:white;
+        }
+        #one   label{
+            position: relative;
+            left:30%;
+            top:.5rem;
+            color: blueviolet;
+        }
+/* ***************************************************************************************************************************** */
+/* More Oremions */
+.more{
+	position: relative;
+	top:80vh;
+	left:5vh;
+	display:none;
+	color:black;
+	
+	background-color: white;
+	width: 10rem;
+	height: 5rem;
+	
+}
+
+.more ul {
+	display: block;
+	text-align: center;
+	position: absolute;
+	list-style:none ;
+}
+
+.more ul li {
+	padding: 1rem;
+	background-color: white;
+}
+
+.more ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+.more ul li a i{
+	font-size: 2rem;
+}
+
+/******************************************************************************************************************/
+
+ .container{
+        position: absolute;
+        background-color:white;
+        border-radius:1rem;
+        display: none;
+        top:80vh;
+        left:70%;
+        height: 10 rem;
+        width:300px;
+        border: 1px solid black;
+        padding:20px;
+    }
+
+    #close_prog{
+    color:gray;
+    float:right;
+    margin-bottom:1rem;
+    }
+
+    #close_prog:hover{
+    cursor:pointer;
+    }
