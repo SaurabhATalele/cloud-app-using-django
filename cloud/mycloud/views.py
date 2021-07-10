@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import render,redirect
 import pyodbc,math,json,datetime,os,requests,razorpay
-from . import encryption_util as e
+
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse,FileResponse
 from .models import Meta,devs,projects,slaves, storage
